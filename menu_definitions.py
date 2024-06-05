@@ -14,7 +14,7 @@ variables or not in Python.
 # The main options for operating on Students.
 menu_main = Menu('main', 'Please select one of the following options:', [
     Option("Add Department", "add_department(sess)"),
-    Option("Delete student", "delete_department(sess)"),
+    Option("Delete department", "delete_department(sess)"),
     Option("List all departments", "list_departments(sess)"),
     Option("Select department from list", "select_department_from_list(sess)"),
     Option("Exit", "pass")
@@ -23,9 +23,9 @@ menu_main = Menu('main', 'Please select one of the following options:', [
 # A menu for how the user will specify which student they want to access,
 # given that there are three separate candidate keys for Student.
 department_select = Menu('department select', 'Please select how you want to select a department:', [
-    Option("ID", "ID"),
-    Option("First and last name", "first/last name"),
-    Option("Electronic mail", "email")
+    Option("Abbreviation", "Abbreviation"),
+    Option("Chair name", "chair_name"),
+    Option("Description", "description")
 ])
 
 # A menu to prompt for the amount of logging information to go to the console.
