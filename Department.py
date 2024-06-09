@@ -1,5 +1,5 @@
 from orm_base import Base
-from sqlalchemy import Column, Integer, String, Identity
+from sqlalchemy import Column, Integer, String, Identity, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 db_connection = " mongodb+srv://cluster22803.xx9rtqy.mongodb.net"
