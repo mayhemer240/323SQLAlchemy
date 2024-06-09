@@ -2,6 +2,8 @@ import logging
 from menu_definitions import menu_main, department_select, debug_select
 from db_connection import engine, Session
 from orm_base import metadata
+# Note that until you import your SQLAlchemy declarative classes, such as Student, Python
+# will not execute that code, and SQLAlchemy will be unaware of the mapped table.
 from Department import Department
 from Option import Option
 from Menu import Menu
@@ -54,34 +56,6 @@ def add_department(session: Session):
     newDepartment = Department(name, abbreviation, chair_name, building, office, description)
     session.add(newDepartment)
     session.commit()
-
-from sqlalchemy.orm import Session
-from sqlalchemy.exc import NoResultFound, MultipleResultsFound
-
-def select_department(session: Session):
-    while True:
-        # Prompt user for the unique constraint value(s)
-        name = input("Enter the department name: ").strip()
-        abbreviation = input("Enter the department abbreviation: ").strip()
-
-        try:
-            # Attempt to select the department based on the provided values
-            department = session.query(Department).filter_by(name=name, abbreviation=abbreviation).one()
-            print(f"Selected Department: {department}")
-            return department
-
-        except NoResultFound:
-            # If no department is found, inform the user and prompt again
-            print("No department found with the provided name and abbreviation. Please try again.")
-        except MultipleResultsFound:
-            # If multiple departments are found, inform the user and prompt again
-            print("Multiple departments found with the provided name and abbreviation. Please refine your search and try again.")
-
-# Example usage:
-# with Session(engine) as session:
-#     select_department(session)
-
-
 
 def select_department_abbreviation(sess: Session)-> Department:
     """
@@ -180,6 +154,7 @@ def delete_department(session: Session):
     print("deleting a department")
     oldDepartment = find_department(session)
     session.delete(oldDepartment)
+    session.commit()
 
 def list_departments(session: Session):
     """
@@ -193,6 +168,29 @@ def list_departments(session: Session):
     for department in departments:
         print(department)
 
+
+def select_department(session: Session):
+    while True:
+        # Prompt user for the unique constraint value(s)
+        name = input("Enter the department name: ").strip()
+        abbreviation = input("Enter the department abbreviation: ").strip()
+
+        try:
+            # Attempt to select the department based on the provided values
+            department = session.query(Department).filter_by(name=name, abbreviation=abbreviation).one()
+            print(f"Selected Department: {department}")
+            return department
+
+        except NoResultFound:
+            # If no department is found, inform the user and prompt again
+            print("No department found with the provided name and abbreviation. Please try again.")
+        except MultipleResultsFound:
+            # If multiple departments are found, inform the user and prompt again
+            print("Multiple departments found with the provided name and abbreviation. Please refine your search and try again.")
+
+# Example usage:
+# with Session(engine) as session:
+#     select_department(session)
 if __name__ == '__main__':
     print('Starting off')
     logging.basicConfig()
