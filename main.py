@@ -1,3 +1,14 @@
+'''
+SQL Single Table 
+Malcolm Roddy
+Due Date: 06/07/2024
+Functions that add, search, and delete a department
+based on user input and utilizes SQL alchemy to update
+and change a database. 
+'''
+
+
+
 import logging
 from menu_definitions import menu_main, department_select, debug_select
 from db_connection import engine, Session
@@ -70,7 +81,11 @@ def select_department_abbreviation(sess: Session)-> Department:
         found = abbreviation_count == 1
         if not found:
             print("No department by that abbreviation. Try again.")
-        oldDepartment = sess.query(Department).filter(Department.abbreviation == abbreviation).first()
+
+    return_department= sess.query(Department).filter(Department.abbreviation == abbreviation).first()
+    return return_department
+
+
 
 def select_department_chair(sess: Session) -> Department:
     """
@@ -143,6 +158,7 @@ def find_department(sess: Session) -> Department:
             old_department = select_department_description(sess)
         case _:
             old_department = None
+    print(old_department)
     return old_department
 
 def delete_department(session: Session):
