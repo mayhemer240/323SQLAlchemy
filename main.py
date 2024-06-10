@@ -4,7 +4,8 @@ Malcolm Roddy
 Due Date: 06/07/2024
 Functions that add, search, and delete a department
 based on user input and utilizes SQL alchemy to update
-and change a database. 
+and change a database. Main function remains unchanged.
+Functions called from menu_definitions
 '''
 
 
