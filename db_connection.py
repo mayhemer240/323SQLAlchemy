@@ -1,3 +1,5 @@
+# Note - no changes made to professors code 
+
 """
 To get getpass to work properly in PyCharm, you need to configure your project:
 Click on the Run Menu at the very top of your PyCharm window.
