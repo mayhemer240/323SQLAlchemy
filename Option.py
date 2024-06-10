@@ -1,3 +1,7 @@
+'''
+Note: no changes made from professors original code
+'''
+
 class Option:
     def __init__(self, prompt: str, action: str):
         """
