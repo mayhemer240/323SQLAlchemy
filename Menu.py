@@ -1,3 +1,8 @@
+'''
+Note: No modifications from professors code, used as is
+Only menu_definitions changed
+'''
+
 from Option import Option
 
 
