@@ -1,3 +1,13 @@
+'''
+Malcolm Roddy
+CECS 323
+Due Date: 06/07/2024
+This file is essentially a clone of student
+with the mapping of attributes changed and the table name
+changed. table_args are important to implement uniqueness constraints
+'''
+
+
 from orm_base import Base
 from sqlalchemy import Column, Integer, UniqueConstraint, Identity
 from sqlalchemy import String
