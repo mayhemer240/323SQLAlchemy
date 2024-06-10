@@ -1,3 +1,5 @@
+# Note - no changes made from professors original code
+
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import MetaData
 
