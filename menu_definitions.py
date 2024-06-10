@@ -1,17 +1,14 @@
+
 from Menu import Menu
 from Option import Option
 """
-This little file just has the menus declared.  Each variable (e.g. menu_main) has 
-its own set of options and actions.  Although, you'll see that the "action" could
-be something other than an operation to perform.
-
-Doing the menu declarations here seemed like a cleaner way to define them.  When
-this is imported in main.py, these assignment statements are executed and the 
-variables are constructed.  To be honest, I'm not sure whether these are global
-variables or not in Python.
+Declares menues, changed from professors code. 
+Two main functions changed - menu_main which prompts user
+what to do with database, and department_select which decides
+how user will select the department wether searching or deleting
 """
 
-# The main options for operating on Students.
+# The main options for operating on Departments.
 menu_main = Menu('main', 'Please select one of the following options:', [
     Option("Add Department", "add_department(sess)"),
     Option("Delete department", "delete_department(sess)"),
@@ -20,8 +17,8 @@ menu_main = Menu('main', 'Please select one of the following options:', [
     Option("Exit", "pass")
 ])
 
-# A menu for how the user will specify which student they want to access,
-# given that there are three separate candidate keys for Student.
+# A menu for how the user will specify which department they want to access,
+# based on uniqueness constraints
 department_select = Menu('department select', 'Please select how you want to select a department:', [
     Option("Abbreviation", "Abbreviation"),
     Option("Chair name", "chair_name"),
